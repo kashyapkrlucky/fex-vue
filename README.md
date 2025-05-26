@@ -13,6 +13,7 @@
 - 💡 **Lucide Icons** via `lucide-vue-next`
 - 🧱 Modular **layouts** and **base components**
 - ✅ Routing, NotFound, and Auth pages included
+- 🌐 Internationalization
 - 📦 Clean folder structure & scalable architecture
 
 ---
@@ -31,7 +32,7 @@ src/
 ├── views/                 # Pages (Home, SignIn, NotFound)
 └── App.vue                # App shell
 
-````
+```
 
 ---
 
@@ -41,23 +42,27 @@ src/
 # 1. Clone the repo
 git clone https://github.com/kashyapkrlucky/fex-vue.git
 cd fex-vue
+```
 
+```bash
 # 2. Install dependencies
 npm install
+```
 
+```bash
 # 3. Start dev server
 npm run dev
-````
+```
 
 ---
 
 ### 🔧 Tech Stack
 
-* [Vue 3](https://vuejs.org/)
-* [Vite](https://vitejs.dev/)
-* [Tailwind CSS](https://tailwindcss.com/)
-* [Pinia](https://pinia.vuejs.org/)
-* [Lucide Icons](https://lucide.dev/icons/)
+- [Vue 3](https://vuejs.org/)
+- [Vite](https://vitejs.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Pinia](https://pinia.vuejs.org/)
+- [Lucide Icons](https://lucide.dev/icons/)
 
 ---
 
