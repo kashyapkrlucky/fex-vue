@@ -22,7 +22,7 @@
 
     <BaseCheckbox v-model="termsAccepted" label="I agree to the terms and conditions" />
 
-    <BaseToggle v-model="darkMode" label="Dark Mode" />
+    <BaseToggle v-model="darkMode" label="Toggle" />
 
     <BaseButton @click="handleClick">Show Loading</BaseButton>
   </div>
@@ -38,7 +38,7 @@ import BaseSelect from '@/components/base/BaseSelect.vue';
 import BaseCheckbox from '@/components/base/BaseCheckbox.vue';
 import BaseToggle from '@/components/base/BaseToggle.vue';
 import BaseButton from '@/components/base/BaseButton.vue';
-import { useLoadingStore } from '@/stores/loading';
+import { useLoadingStore } from '@/stores/loading.store';
 
 
 const name = ref('')

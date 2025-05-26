@@ -4,6 +4,10 @@
     <h1 class="text-lg font-semibold">App Name</h1>
     <div class="flex items-center space-x-4">
       <!-- Theme toggle, profile, etc. -->
+      <UserMenu></UserMenu>
     </div>
   </header>
 </template>
+<script lang="ts" setup>
+import UserMenu from "@/components/base/UserMenu.vue";
+</script>

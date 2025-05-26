@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import { useLoadingStore } from '@/stores/loading'
+import { useLoadingStore } from '@/stores/loading.store'
 import { storeToRefs } from 'pinia'
 
 const loadingStore = useLoadingStore()

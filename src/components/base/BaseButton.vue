@@ -8,7 +8,7 @@ defineProps<{
 
 <template>
   <button :type="type || 'button'" :class="[
-    'px-4 py-2 rounded font-semibold transition',
+    'px-4 py-2 rounded font-semibold transition cursor-pointer',
     variant === 'primary' && 'bg-primary text-white hover:bg-primary/90',
     variant === 'secondary' && 'bg-gray-200 text-black hover:bg-gray-300',
     variant === 'danger' && 'bg-red-500 text-white hover:bg-red-600',

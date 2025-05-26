@@ -2,34 +2,72 @@ import { createRouter, createWebHistory } from "vue-router";
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
 import AuthLayout from "@/layouts/AuthLayout.vue";
 import MinimalLayout from "@/layouts/MinimalLayout.vue";
-import HomeView from "../views/HomeView.vue";
-import SignInView from "../views/SignInView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
-import ExampleView from "@/views/ExampleView.vue";
+import { useUserStore } from "@/stores/user.store";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: "/",
-      component: DefaultLayout,
-      children: [{ path: "", component: HomeView }],
-    },
-    {
       path: "/sign-in",
       component: AuthLayout,
-      children: [{ path: "", component: SignInView }],
+      children: [
+        {
+          path: "",
+          name: "sign-in",
+          component: () => import("../views/SignInView.vue"),
+        },
+      ],
+    },
+    {
+      path: "/sign-up",
+      component: AuthLayout,
+      children: [
+        {
+          path: "",
+          name: "sign-up",
+          component: () => import("../views/SignUpView.vue"),
+        },
+      ],
+    },
+    {
+      path: "/",
+      component: DefaultLayout,
+      children: [
+        {
+          path: "",
+          name: "home",
+          component: () => import("../views/HomeView.vue"),
+        },
+      ],
     },
     {
       path: "/examples",
-      component: AuthLayout,
-      children: [{ path: "", component: ExampleView }],
+      component: DefaultLayout,
+      children: [
+        {
+          path: "",
+          name: "examples",
+          component: () => import("../views/ExampleView.vue"),
+        },
+      ],
     },
     {
       path: "/about",
       component: DefaultLayout,
       children: [
-        { path: "", component: () => import("../views/AboutView.vue") },
+        {
+          path: "",
+          name: "about",
+          component: () => import("../views/AboutView.vue"),
+        },
+      ],
+    },
+    {
+      path: "/not-found",
+      component: MinimalLayout,
+      children: [
+        { path: "", name: "not-found", component: NotFoundView }, // Correct
       ],
     },
     {
@@ -40,6 +78,26 @@ const router = createRouter({
       ],
     },
   ],
+});
+
+router.beforeEach((to, from, next) => {
+  const auth = useUserStore();
+
+  const publicPages = ["/sign-in", "/sign-up", "/examples", "/"];
+  const authRequired = !publicPages.includes(to.path);
+
+  if (authRequired && !auth.isAuthenticated) {
+    return next("/sign-in");
+  }
+
+  if (
+    (to.path === "/sign-in" || to.path === "/sign-up") &&
+    auth.isAuthenticated
+  ) {
+    return next("/");
+  }
+
+  next();
 });
 
 export default router;
