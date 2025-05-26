@@ -1,0 +1,24 @@
+{
+  "auth": {
+    "welcome": "Willkommen zurück",
+    "noAccount": "Sie haben kein Konto?",
+    "signUp": "Registrieren",
+    "signIn": "Anmelden",
+    "createAccount": "Konto erstellen",
+    "alreadyHaveAccount": "Sie haben bereits ein Konto?",
+    "enter": "Einloggen",
+    "create": "Erstellen"
+  },
+  "nav": {
+    "home": "Startseite",
+    "about": "Über uns",
+    "contact": "Kontakt"
+  },
+  "home": {
+    "welcome": "Willkommen auf der Startseite",
+    "description": "Dies ist die Startseite Ihrer Vorlagen-App."
+  },
+  "about": {
+    "info": "Diese Seite enthält Informationen über die App."
+  }
+}

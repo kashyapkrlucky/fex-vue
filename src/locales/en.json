@@ -1,0 +1,24 @@
+{
+  "auth": {
+    "welcome": "Welcome Back",
+    "noAccount": "Don't have an account?",
+    "signUp": "Sign up",
+    "signIn": "Sign in",
+    "createAccount": "Create Account",
+    "alreadyHaveAccount": "Already have an account?",
+    "enter": "Enter",
+    "create": "Create"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "home": {
+    "welcome": "Welcome to Home",
+    "description": "This is the homepage of your template app."
+  },
+  "about": {
+    "info": "This page gives some info about the app."
+  }
+}

@@ -3,10 +3,11 @@
     <div class="w-[86vw] m-auto max-w-md">
       <!-- Title Section -->
       <div class="flex flex-col gap-4 mb-6">
-        <h2 class="text-2xl font-semibold text-gray-600">Welcome Back</h2>
+        <!-- <h2 class="text-2xl font-semibold text-gray-600">Welcome Back</h2> -->
+        <h2 class="text-2xl font-semibold text-gray-600">{{ $t('auth.welcome') }}</h2>
         <div class="flex flex-row gap-1">
-          <span class="text-gray-400">Don't have an account?</span>
-          <RouterLink to="/sign-up" class="text-primary">Sign up</RouterLink>
+          <span class="text-gray-400">{{ $t('auth.noAccount') }}</span>
+          <RouterLink to="/sign-up" class="text-primary">{{ $t('auth.signUp') }}</RouterLink>
         </div>
       </div>
 
@@ -38,7 +39,7 @@
           data-testid="sign-in-button" variant="primary">
           <template #default>
             <span v-if="loadingStore?.loading">Logging in...</span>
-            <span v-else>Submit</span>
+            <span v-else>{{ $t('auth.enter') }}</span>
           </template>
         </BaseButton>
 

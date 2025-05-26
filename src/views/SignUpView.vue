@@ -3,10 +3,10 @@
     <div class="w-[86vw] m-auto max-w-md">
       <!-- Title Section -->
       <div class="flex flex-col gap-4 mb-6">
-        <h2 class="text-2xl font-semibold text-gray-600">Create Account</h2>
+        <h2 class="text-2xl font-semibold text-gray-600">{{ $t('auth.createAccount') }}</h2>
         <div class="flex flex-row gap-1">
-          <span class="text-gray-400">Already have an account?</span>
-          <RouterLink to="/sign-in" class="text-primary">Sign in</RouterLink>
+          <span class="text-gray-400">{{ $t('auth.alreadyHaveAccount') }}</span>
+          <RouterLink to="/sign-in" class="text-primary">{{ $t('auth.signIn') }}</RouterLink>
         </div>
       </div>
 
@@ -54,7 +54,7 @@
           data-testid="sign-up-button" variant="primary">
           <template #default>
             <span v-if="loadingStore?.loading">Signing up...</span>
-            <span v-else>Sign Up</span>
+            <span v-else>{{ $t('auth.create') }}</span>
           </template>
         </BaseButton>
 

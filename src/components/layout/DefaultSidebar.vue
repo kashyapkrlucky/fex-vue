@@ -4,13 +4,12 @@
     <nav class="p-4 space-y-2">
       <RouterLink to="/" class="block px-3 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700"
         active-class="bg-gray-100 dark:bg-gray-700 font-medium">
-        Home
+        {{ $t('nav.home') }}
       </RouterLink>
       <RouterLink to="/about" class="block px-3 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700"
         active-class="bg-gray-100 dark:bg-gray-700 font-medium">
-        About
+        {{ $t('nav.about') }}
       </RouterLink>
     </nav>
-
   </aside>
 </template>
