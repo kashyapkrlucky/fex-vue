@@ -14,17 +14,21 @@
       <button @click="showModal = false" class="mt-4">Close</button>
     </BaseModal>
 
-    <BaseInput v-model="name" label="Your Name" placeholder="Enter your name" />
+    <BaseInput v-model="name" id="name" label="Your Name" placeholder="Enter your name" />
 
-    <BaseTextarea v-model="message" label="Message" placeholder="Write your message..." />
+    <BaseTextarea v-model="message" id="message" label="Message" placeholder="Write your message..." />
 
-    <BaseSelect v-model="selected" label="Role" :options="options" placeholder="Select a role" />
+    <BaseSelect v-model="selected" id="role" label="Role" :options="options" placeholder="Select a role" />
 
-    <BaseCheckbox v-model="termsAccepted" label="I agree to the terms and conditions" />
+    <BaseCheckbox v-model="termsAccepted" id="termsAccepted" label="I agree to the terms and conditions" />
 
     <BaseToggle v-model="darkMode" label="Toggle" />
 
-    <BaseButton @click="handleClick">Show Loading</BaseButton>
+    <div class="flex flex-row gap-4">
+      <BaseButton @click="handleClick" variant="primary">Primary</BaseButton>
+      <BaseButton variant="secondary">Secondary</BaseButton>
+      <BaseButton variant="danger">Danger</BaseButton>
+    </div>
   </div>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
   <div class="fixed bottom-20 z-50 space-y-2 w-full">
     <TransitionGroup name="fade" tag="div">
-      <div v-for="alert in alertStore.alerts" :key="alert.id" :class="[
+      <div v-for="alert in alertStore.alerts" :key="alert.id" role="alert" :class="[
         'm-auto flex items-start gap-3 px-4 py-3 rounded-lg shadow-md cursor-pointer max-w-sm',
         alert.type === 'error' ? 'text-red-700 bg-red-100' :
           alert.type === 'success' ? 'text-green-700 bg-green-100' :

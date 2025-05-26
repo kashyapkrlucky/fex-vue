@@ -64,6 +64,17 @@ const router = createRouter({
       ],
     },
     {
+      path: "/settings",
+      component: DefaultLayout,
+      children: [
+        {
+          path: "/",
+          name: "settings",
+          component: () => import("../views/SettingsView.vue"),
+        },
+      ],
+    },
+    {
       path: "/not-found",
       component: MinimalLayout,
       children: [

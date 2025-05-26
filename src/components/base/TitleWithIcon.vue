@@ -1,12 +1,15 @@
 <template>
   <div class="flex items-center gap-2 text-gray-800">
-    <slot name="icon" />
-    <span class="text-xs lg:text-sm uppercase font-semibold">{{ text }}</span>
+    <component :is="icon" class="w-5 h-5 text-primary" />
+    <h2 class="text-lg font-semibold">{{ title }}</h2>
   </div>
 </template>
 
 <script setup lang="ts">
-defineProps({
-  text: String
-})
+import type { Component } from 'vue'
+
+defineProps<{
+  title: string
+  icon: Component
+}>()
 </script>

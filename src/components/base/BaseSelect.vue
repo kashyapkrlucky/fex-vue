@@ -16,7 +16,7 @@ const emit = defineEmits(['update:modelValue'])
       {{ label }}
     </label>
     <select :value="modelValue" @change="emit('update:modelValue', $event.target.value)"
-      class="w-full px-3 py-2 border rounded-md bg-white dark:bg-gray-800 dark:text-white dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary">
+      class="w-full px-3 py-2 border border-gray-300 rounded-md bg-white focus:outline-none focus:border-gray-50 focus:ring-2 focus:ring-primary">
       <option v-if="placeholder" value="" disabled>{{ placeholder }}</option>
       <option v-for="option in options" :key="option.value" :value="option.value">
         {{ option.label }}

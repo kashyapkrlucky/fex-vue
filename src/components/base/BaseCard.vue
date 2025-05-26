@@ -9,7 +9,7 @@ defineProps<{
   <div :class="[
     'rounded-xl bg-white dark:bg-gray-800',
     noPadding ? '' : 'p-4',
-    noShadow ? '' : 'shadow-md'
+    noShadow ? '' : 'shadow-sm'
   ]">
     <slot />
   </div>
