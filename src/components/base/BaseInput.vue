@@ -18,7 +18,7 @@ const emit = defineEmits(['update:modelValue'])
     </label>
     <input :id="id" :type="type || 'text'" :placeholder="placeholder" :value="modelValue"
       @input="emit('update:modelValue', $event.target.value)" autocomplete="on"
-      class="w-full px-3 py-2 border border-gray-400 rounded-md bg-white focus:outline-none focus:border-gray-50 focus:ring-1 focus:ring-primary" />
+      class="w-full px-3 py-2 border border-gray-300 rounded-md bg-white focus:outline-none focus:border-gray-50 focus:ring-1 focus:ring-primary" />
     <p v-if="error" class="text-sm text-red-500">{{ error }}</p>
   </div>
 </template>

@@ -12,6 +12,14 @@
 
       <!-- Sign Up Form -->
       <form @submit.prevent="onSignUp" class="flex flex-col gap-4">
+
+        <!-- Name Input -->
+        <div>
+          <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+          <BaseInput id="name" type="name" placeholder="Enter your name" v-model="name" @input="clearError" required
+            data-testid="name-input" class="mt-1" />
+        </div>
+
         <!-- Email Input -->
         <div>
           <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
@@ -27,8 +35,8 @@
               v-model="password" @input="clearError" required data-testid="password-input" class="mt-1" />
             <button type="button" @click="showPassword = !showPassword" aria-label="Toggle password visibility"
               class="absolute inset-y-0 right-2 flex items-center text-gray-500">
-              <EyeOffIcon v-if="showPassword" size="20" />
-              <EyeIcon v-else size="20" />
+              <EyeOffIcon v-if="showPassword" :size="20" />
+              <EyeIcon v-else :size="20" />
             </button>
           </div>
         </div>
@@ -43,8 +51,8 @@
             <button type="button" @click="showConfirmPassword = !showConfirmPassword"
               aria-label="Toggle confirm password visibility"
               class="absolute inset-y-0 right-2 flex items-center text-gray-500">
-              <EyeOffIcon v-if="showConfirmPassword" size="20" />
-              <EyeIcon v-else size="20" />
+              <EyeOffIcon v-if="showConfirmPassword" :size="20" />
+              <EyeIcon v-else :size="20" />
             </button>
           </div>
         </div>
@@ -71,12 +79,14 @@
 import { ref } from 'vue'
 import { useUserStore } from '@/stores/user.store'
 import { useLoadingStore } from '@/stores/loading.store'
+import { useAlertStore } from '@/stores/alert.store'
 import { useRouter } from 'vue-router'
 import { EyeIcon, EyeOffIcon } from 'lucide-vue-next'
 
 import BaseInput from '@/components/base/BaseInput.vue'
 import BaseButton from '@/components/base/BaseButton.vue'
 
+const name = ref('')
 const email = ref('')
 const password = ref('')
 const confirmPassword = ref('')
@@ -87,6 +97,7 @@ const showConfirmPassword = ref(false)
 
 const userStore = useUserStore()
 const loadingStore = useLoadingStore()
+const alertStore = useAlertStore();
 const router = useRouter()
 
 const clearError = () => {
@@ -101,32 +112,28 @@ const onSignUp = async () => {
   clearError()
 
   if (!isValidEmail(email.value)) {
-    signUpError.value = true
-    errorMessage.value = 'Please enter a valid email address.'
+    alertStore.addAlert('Please enter a valid email address.', 'error', 4000)
     return
   }
 
   if (password.value.length < 6) {
-    signUpError.value = true
-    errorMessage.value = 'Password must be at least 6 characters.'
+    alertStore.addAlert('Password length must be at-least 6 characters', 'error', 4000)
     return
   }
 
   if (password.value !== confirmPassword.value) {
-    signUpError.value = true
-    errorMessage.value = 'Passwords do not match.'
+    alertStore.addAlert('Passwords do not match.', 'error', 4000)
     return
   }
 
   try {
-    loadingStore.setLoading(true)
-    await userStore.signUp(email.value, password.value)
+    loadingStore.show()
+    await userStore.signUp(name.value, email.value, password.value)
     router.push('/')
   } catch (e) {
-    signUpError.value = true
-    errorMessage.value = e?.message || 'Sign Up failed. Please try again.'
+    if (e) alertStore.addAlert('Sign Up failed. Please try again.', 'error', 4000)
   } finally {
-    loadingStore.setLoading(false)
+    loadingStore.hide();
   }
 }
 </script>

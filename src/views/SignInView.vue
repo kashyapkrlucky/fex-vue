@@ -28,8 +28,8 @@
               v-model="password" @input="clearError" required data-testid="password-input" class="mt-1 " />
             <button type="button" @click="showPassword = !showPassword" aria-label="Toggle password visibility"
               class="absolute inset-y-0 right-2 flex items-center text-gray-500">
-              <EyeOffIcon v-if="showPassword" size="20" />
-              <EyeIcon v-else size="20" />
+              <EyeOffIcon v-if="showPassword" :size="20" />
+              <EyeIcon v-else :size="20" />
             </button>
           </div>
         </div>
@@ -62,11 +62,14 @@ import { EyeIcon, EyeOffIcon } from 'lucide-vue-next'
 // Base components (update the path if needed)
 import BaseInput from '@/components/base/BaseInput.vue'
 import BaseButton from '@/components/base/BaseButton.vue'
+import { useAlertStore } from '@/stores/alert.store'
 
 const email = ref('')
 const password = ref('')
 const signInError = ref(false)
 const showPassword = ref(false)
+const alertStore = useAlertStore();
+
 
 const userStore = useUserStore()
 const loadingStore = useLoadingStore()
@@ -83,25 +86,23 @@ const onSignIn = async () => {
   signInError.value = false
 
   if (!isValidEmail(email.value)) {
-    signInError.value = true
+    alertStore.addAlert('Please enter a valid email address.', 'error', 4000)
     return
   }
 
   if (password.value.length < 3) {
-    signInError.value = true
+    alertStore.addAlert('Password length must be at-least 6 characters', 'error', 4000)
     return
   }
 
   try {
-    loadingStore.setLoading(true)
+    loadingStore.show();
     await userStore.signIn(email.value, password.value)
     router.push('/')
   } catch (e) {
-    console.log(e);
-
-    signInError.value = true
+    if (e) alertStore.addAlert('Something went wrong!!!', 'error', 4000)
   } finally {
-    loadingStore.setLoading(false)
+    loadingStore.hide();
   }
 }
 </script>
