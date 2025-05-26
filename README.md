@@ -13,7 +13,8 @@
 - 💡 **Lucide Icons** via `lucide-vue-next`
 - 🧱 Modular **layouts** and **base components**
 - ✅ Routing, NotFound, and Auth pages included
-- 🌐 Internationalization
+- 🌐 Internationalization with Vue I18n
+- 🧪 Unit and E2E Testing Ready
 - 📦 Clean folder structure & scalable architecture
 
 ---
@@ -31,7 +32,6 @@ src/
 ├── store/                 # Pinia stores
 ├── views/                 # Pages (Home, SignIn, NotFound)
 └── App.vue                # App shell
-
 ```
 
 ---
@@ -56,16 +56,60 @@ npm run dev
 
 ---
 
+### 🧪 Testing Setup
+
+#### ✅ Unit Testing with Vitest
+
+```bash
+# Run unit tests
+npm run test:unit
+
+# Run unit tests with coverage summary
+npm run coverage
+```
+
+#### 🌐 End-to-End (E2E) Testing with Cypress
+
+```bash
+# Start the Vite dev server
+npm run dev
+```
+
+In a second terminal:
+
+```bash
+# Launch Cypress GUI
+npx cypress open
+```
+
+Or run Cypress tests headlessly after starting the dev server:
+
+```bash
+# Automatically start dev server and run Cypress tests
+npm run test:e2e
+```
+
+> Uses [`start-server-and-test`](https://www.npmjs.com/package/start-server-and-test) to coordinate dev server and Cypress.
+
+---
+
 ### 🔧 Tech Stack
 
 - [Vue 3](https://vuejs.org/)
 - [Vite](https://vitejs.dev/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Pinia](https://pinia.vuejs.org/)
-- [Lucide Icons](https://lucide.dev/icons/)
+- [Vue I18n](https://kazupon.github.io/vue-i18n/)
+- [Lucide Icons](https://lucide.dev/icons)
+- [Vitest](https://vitest.dev/)
+- [Cypress](https://www.cypress.io/)
 
 ---
 
 ### 📄 License
 
 MIT © [Lucky Kumar Kashyap](https://github.com/kashyapkrlucky)
+
+```
+
+```
