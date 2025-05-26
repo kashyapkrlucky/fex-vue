@@ -89,8 +89,6 @@ Or run Cypress tests headlessly after starting the dev server:
 npm run test:e2e
 ```
 
-> Uses [`start-server-and-test`](https://www.npmjs.com/package/start-server-and-test) to coordinate dev server and Cypress.
-
 ---
 
 ### 🔧 Tech Stack
@@ -109,7 +107,3 @@ npm run test:e2e
 ### 📄 License
 
 MIT © [Lucky Kumar Kashyap](https://github.com/kashyapkrlucky)
-
-```
-
-```
