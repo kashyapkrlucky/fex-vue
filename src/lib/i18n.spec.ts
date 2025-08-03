@@ -14,7 +14,7 @@ describe("i18n configuration", () => {
       setItem: vi.fn(),
     });
 
-    const { createI18nInstance } = await import("@/plugins/i18n"); // require or import dynamically
+    const { createI18nInstance } = await import("@/lib/i18n"); // require or import dynamically
     const i18n = createI18nInstance();
 
     expect(i18n.global.locale.value).toBe("en");
@@ -27,7 +27,7 @@ describe("i18n configuration", () => {
       setItem: vi.fn(),
     });
 
-    const { createI18nInstance } = await import("@/plugins/i18n");
+    const { createI18nInstance } = await import("@/lib/i18n");
     const i18n = createI18nInstance();
 
     expect(i18n.global.locale.value).toBe("de");
@@ -40,7 +40,7 @@ describe("i18n configuration", () => {
       setItem: vi.fn(),
     });
 
-    const { createI18nInstance } = await import("@/plugins/i18n");
+    const { createI18nInstance } = await import("@/lib/i18n");
     const i18n = createI18nInstance();
 
     expect(i18n.global.locale.value).toBe("fr");

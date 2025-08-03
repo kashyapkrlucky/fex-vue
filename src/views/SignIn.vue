@@ -1,8 +1,8 @@
 <template>
-  <div class="w-full flex flex-row justify-center">
-    <div class="w-[86vw] m-auto max-w-md">
+  <div class="h-full flex flex-row items-center justify-center">
+    <div class="w-lg bg-white p-6 rounded-lg shadow-sm">
       <!-- Title Section -->
-      <div class="flex flex-col gap-4 mb-6">
+      <div class="flex flex-column gap-4 mb-6">
         <!-- <h2 class="text-2xl font-semibold text-gray-600">Welcome Back</h2> -->
         <h2 class="text-2xl font-semibold text-gray-600">{{ $t('auth.welcome') }}</h2>
         <div class="flex flex-row gap-1">
@@ -12,41 +12,35 @@
       </div>
 
       <!-- Sign In Form -->
-      <form @submit.prevent="onSignIn" class="flex flex-col gap-4">
+      <form @submit.prevent="onSignIn" class="flex flex-column gap-4">
         <!-- Email Input -->
-        <div>
-          <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-          <BaseInput id="email" type="email" placeholder="Enter your email" v-model="email" @input="clearError" required
-            data-testid="email-input" class="mt-1" />
-        </div>
+        <Input label="Email Address" id="email" type="email" placeholder="Enter your email" v-model="email"
+          @input="clearError" required data-testid="email-input" />
 
         <!-- Password Input with Toggle -->
-        <div>
-          <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-          <div class="relative">
-            <BaseInput :type="showPassword ? 'text' : 'password'" id="password" placeholder="Enter your password"
-              v-model="password" @input="clearError" required data-testid="password-input" class="mt-1 " />
-            <button type="button" @click="showPassword = !showPassword" aria-label="Toggle password visibility"
-              class="absolute inset-y-0 right-2 flex items-center text-gray-500">
-              <EyeOffIcon v-if="showPassword" :size="20" />
-              <EyeIcon v-else :size="20" />
-            </button>
-          </div>
+        <div class="relative">
+          <Input label="Password" :type="showPassword ? 'text' : 'password'" id="password"
+            placeholder="Enter your password" v-model="password" @input="clearError" required
+            data-testid="password-input" />
+          <p @click="showPassword = !showPassword" aria-label="Toggle password visibility"
+            class="absolute top-10 right-2 flex items-center text-gray-500 bg-white border-0">
+            <EyeOffIcon v-if="showPassword" :size="20" />
+            <EyeIcon v-else :size="20" />
+          </p>
         </div>
 
         <!-- Sign In Button -->
-        <BaseButton type="submit" :disabled="loadingStore?.loading" :loading="loadingStore?.loading" class="w-full"
-          data-testid="sign-in-button" variant="primary">
-          <template #default>
-            <span v-if="loadingStore?.loading">Logging in...</span>
-            <span v-else>{{ $t('auth.enter') }}</span>
-          </template>
-        </BaseButton>
+        <Button variant="primary" type="submit" :disabled="loadingStore?.loading" :loading="loadingStore?.loading"
+          data-testid="sign-in-button">
+          <span v-if="loadingStore?.loading">Logging in...</span>
+          <span v-else>{{ $t('auth.enter') }}</span>
+        </Button>
 
         <!-- Error Message -->
         <div v-if="signInError" class="text-red-600 text-center text-sm" data-testid="login-error">
           Sign In failed. Please check your credentials.
         </div>
+
       </form>
     </div>
   </div>
@@ -59,10 +53,8 @@ import { useLoadingStore } from '@/stores/loading.store'
 import { useRouter } from 'vue-router'
 import { EyeIcon, EyeOffIcon } from 'lucide-vue-next'
 
-// Base components (update the path if needed)
-import BaseInput from '@/components/base/BaseInput.vue'
-import BaseButton from '@/components/base/BaseButton.vue'
 import { useAlertStore } from '@/stores/alert.store'
+import { Button, Input } from 'nexora-ui-vue'
 
 const email = ref('')
 const password = ref('')

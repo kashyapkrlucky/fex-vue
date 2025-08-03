@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
 import AuthLayout from "@/layouts/AuthLayout.vue";
 import MinimalLayout from "@/layouts/MinimalLayout.vue";
-import NotFoundView from "../views/NotFoundView.vue";
+import NotFoundView from "../views/NotFound.vue";
 import { useUserStore } from "@/stores/user.store";
 
 const router = createRouter({
@@ -15,7 +15,7 @@ const router = createRouter({
         {
           path: "",
           name: "sign-in",
-          component: () => import("../views/SignInView.vue"),
+          component: () => import("../views/SignIn.vue"),
         },
       ],
     },
@@ -26,7 +26,7 @@ const router = createRouter({
         {
           path: "",
           name: "sign-up",
-          component: () => import("../views/SignUpView.vue"),
+          component: () => import("../views/SignUp.vue"),
         },
       ],
     },
@@ -48,29 +48,7 @@ const router = createRouter({
         {
           path: "",
           name: "examples",
-          component: () => import("../views/ExampleView.vue"),
-        },
-      ],
-    },
-    {
-      path: "/about",
-      component: DefaultLayout,
-      children: [
-        {
-          path: "",
-          name: "about",
-          component: () => import("../views/AboutView.vue"),
-        },
-      ],
-    },
-    {
-      path: "/settings",
-      component: DefaultLayout,
-      children: [
-        {
-          path: "/",
-          name: "settings",
-          component: () => import("../views/SettingsView.vue"),
+          component: () => import("../views/Examples.vue"),
         },
       ],
     },

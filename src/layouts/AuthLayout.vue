@@ -1,14 +1,19 @@
 <template>
-  <div class="min-h-screen w-full flex flex-col">
-    <header class="flex flex-row justify-between p-4 bg-white border-b border-gray-200">
+  <div class="flex flex-column h-screen bg-gray-50 text-gray-900 overflow-hidden">
+    <header class="flex items-center justify-between px-4 border-b border-gray-200 bg-white h-16 shadow-md">
       <h2 class="font-bold">AppName</h2>
       <LanguageSwitcher></LanguageSwitcher>
     </header>
-    <div class="w-full flex-1 flex justify-center items-center bg-gray-50">
+    <main class="flex-1 overflow-y-auto">
       <router-view />
-    </div>
+    </main>
   </div>
 </template>
 <script lang="ts" setup>
 import LanguageSwitcher from "@/components/base/LanguageSwitcher.vue";
 </script>
+<style>
+select {
+  width: auto;
+}
+</style>
