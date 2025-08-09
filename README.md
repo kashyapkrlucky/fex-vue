@@ -1,7 +1,7 @@
 # 🚀 FEX Vue — Frontend X Starter for Vue 3
 
 **FEX (Frontend X)** is a collection of modern frontend starter kits built for speed, scalability, and simplicity.  
-`fex-vue` is the Vue 3 edition — powered by **Vite**, **Tailwind CSS**, **Pinia**, and **Lucide** icons.
+`fex-vue` is the Vue 3 edition — powered by **Vite**, **Nexora CSS**, **Pinia**, and **Lucide** icons.
 
 ---
 
@@ -95,7 +95,7 @@ npm run test:e2e
 
 - [Vue 3](https://vuejs.org/)
 - [Vite](https://vitejs.dev/)
-- [Tailwind CSS](https://tailwindcss.com/)
+- [Nexora CSS](https://www.npmjs.com/package/nexora-css)
 - [Pinia](https://pinia.vuejs.org/)
 - [Vue I18n](https://kazupon.github.io/vue-i18n/)
 - [Lucide Icons](https://lucide.dev/icons)
